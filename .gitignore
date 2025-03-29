@@ -1,0 +1,37 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio Code settings folder
+.vscode/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Visual Studio working files
+.vs/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*.log
+
+# Rider / JetBrains files
+.idea/
+*.sln.iml
+
+# Package directories
+packages/
+.nuget/
+
+# Dotnet tools
+*.swp
+*.swm
+*.tmp
+*.log
+
+Secrets.*
+
