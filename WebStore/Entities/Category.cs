@@ -1,19 +1,19 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WebStore.Entities
+namespace WebStore.Entities;
+
+public partial class Category
 {
-    public class Category
-    {
-        public int CategoryId { get; set; }
+    public int CategoryId { get; set; }
 
-        [Required, MaxLength(100)]
-        public string CategoryName { get; set; } = null!;
+    public string CategoryName { get; set; } = null!;
 
-        public int? ParentCategoryId { get; set; }
+    public int? ParentCategoryId { get; set; }
 
-        // Navigation
-        public Category? ParentCategory { get; set; }
-        public ICollection<Category>? SubCategories { get; set; }
-        public ICollection<ProductCategory>? ProductCategories { get; set; }
-    }
+    public virtual ICollection<Category> InverseParentCategory { get; set; } = new List<Category>();
+
+    public virtual Category? ParentCategory { get; set; }
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

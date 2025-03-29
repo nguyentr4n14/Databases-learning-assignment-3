@@ -1,28 +1,25 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WebStore.Entities
+namespace WebStore.Entities;
+
+public partial class Customer
 {
-    public class Customer
-    {
-        public int CustomerId { get; set; }
+    public int CustomerId { get; set; }
 
-        [Required, MaxLength(50)]
-        public string FirstName { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-        [Required, MaxLength(50)]
-        public string LastName { get; set; } = null!;
+    public string LastName { get; set; } = null!;
 
-        [Required, MaxLength(100)]
-        public string Email { get; set; } = null!;
+    public string Email { get; set; } = null!;
 
-        [MaxLength(20)]
-        public string? Phone { get; set; }
+    public string? Phone { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
-        // Navigation
-        public ICollection<Address>? Addresses { get; set; }
-        public ICollection<Order>? Orders { get; set; }
-    }
+    public DateTime? UpdatedAt { get; set; }
+
+    public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

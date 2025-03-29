@@ -1,31 +1,29 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WebStore.Entities
+namespace WebStore.Entities;
+
+public partial class Address
 {
-    public class Address
-    {
-        public int AddressId { get; set; }
-        public int CustomerId { get; set; }
+    public int AddressId { get; set; }
 
-        [MaxLength(100)]
-        public string? Street { get; set; }
+    public int CustomerId { get; set; }
 
-        [MaxLength(50)]
-        public string? City { get; set; }
+    public string? Street { get; set; }
 
-        [MaxLength(50)]
-        public string? State { get; set; }
+    public string? City { get; set; }
 
-        [MaxLength(20)]
-        public string? PostalCode { get; set; }
+    public string? State { get; set; }
 
-        [MaxLength(50)]
-        public string? Country { get; set; }
+    public string? PostalCode { get; set; }
 
-        [MaxLength(20)]
-        public string? AddressType { get; set; }
+    public string? Country { get; set; }
 
-        // Navigation
-        public Customer? Customer { get; set; }
-    }
+    public string? AddressType { get; set; }
+
+    public virtual Customer Customer { get; set; } = null!;
+
+    public virtual ICollection<Order> OrderBillingAddresses { get; set; } = new List<Order>();
+
+    public virtual ICollection<Order> OrderShippingAddresses { get; set; } = new List<Order>();
 }

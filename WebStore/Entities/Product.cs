@@ -1,24 +1,25 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WebStore.Entities
+namespace WebStore.Entities;
+
+public partial class Product
 {
-    public class Product
-    {
-        public int ProductId { get; set; }
+    public int ProductId { get; set; }
 
-        [Required, MaxLength(100)]
-        public string ProductName { get; set; } = null!;
+    public string ProductName { get; set; } = null!;
 
-        [MaxLength(255)]
-        public string? Description { get; set; }
+    public string? Description { get; set; }
 
-        public decimal? Price { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+    public decimal? Price { get; set; }
 
-        // Navigation
-        public ICollection<ProductCategory>? ProductCategories { get; set; }
-        public ICollection<OrderItem>? OrderItems { get; set; }
-        public ICollection<Stocks>? Stocks { get; set; }
-    }
+    public DateTime? CreatedAt { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+    public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
+
+    public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
 }

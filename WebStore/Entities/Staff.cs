@@ -1,26 +1,21 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WebStore.Entities
+namespace WebStore.Entities;
+
+public partial class Staff
 {
-    public class Staff
-    {
-        public int StaffId { get; set; }
+    public int StaffId { get; set; }
 
-        [Required, MaxLength(50)]
-        public string FirstName { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-        [Required, MaxLength(50)]
-        public string LastName { get; set; } = null!;
+    public string LastName { get; set; } = null!;
 
-        [Required, MaxLength(100)]
-        public string Email { get; set; } = null!;
+    public string Email { get; set; } = null!;
 
-        [MaxLength(20)]
-        public string? Phone { get; set; }
+    public string? Phone { get; set; }
 
-        public int StoreId { get; set; }
+    public int StoreId { get; set; }
 
-        // Navigation
-        public Store? Store { get; set; }
-    }
+    public virtual Store Store { get; set; } = null!;
 }

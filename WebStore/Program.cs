@@ -9,7 +9,7 @@ namespace WebStore
     {
         static async Task Main(string[] args)
         {
-            
+
 
             using var context = new WebStoreContext();
 

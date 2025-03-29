@@ -41,7 +41,7 @@ namespace WebStore.Assignments
             // HINT: context.Customers
 
             /* Uncomment this code after generating the entity models
-            
+
             var customers = await _dbContext.Customers
                // .AsNoTracking() // optional for read-only
                .ToListAsync();
